@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:themes/models/theme_provider.dart';
 import 'package:themes/pages/home_page.dart';
