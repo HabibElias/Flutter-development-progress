@@ -23,7 +23,7 @@ class _QuestionViewState extends State<QuestionView> {
     return Consumer<QuestionProvider>(builder: (context, value, child) {
       List<Question> questions = value.getQuestions;
       return Expanded(
-        child: FlutterCarousel.builder(
+        child: FlutterCarousel(
           options: CarouselOptions(
             controller: widget.carouselController,
             enableInfiniteScroll: false,
@@ -31,9 +31,10 @@ class _QuestionViewState extends State<QuestionView> {
             enlargeCenterPage: true,
             showIndicator: false,
           ),
-          itemCount: questions.length,
-          itemBuilder:
-              (BuildContext context, int questionIndex, int pageViewIndex) {
+          
+          items: questions.map((item) {
+return Builder(builder: (BuildContext context)
+              {
             // var selectedoption = value.getAnswers(questionIndex).first;
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -61,7 +62,7 @@ class _QuestionViewState extends State<QuestionView> {
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Text(
-                            questions[questionIndex].aquestion,
+                            item.aquestion,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                                 fontFamily: 'Linden',
@@ -74,18 +75,19 @@ class _QuestionViewState extends State<QuestionView> {
                     ),
                     //the answers with radio buttons,
                     QuetionViewer(
-                      selectedoption: questions[questionIndex].selectedoption,
-                      question: questions[questionIndex],
+                      selectedoption: item.selectedoption,
+                      question: item,
                       onChanged: (String? newvalue) {
                         setState(() {
-                          questions[questionIndex].selectedoption = newvalue!;
-                          value.changeAnswer(questionIndex);
+                          item.selectedoption = newvalue!;
+                          value.changeAnswer(questions.indexOf(item));
                         });
                       },
                     ),
                   ]),
             );
-          },
+          },);
+          }).toList(),
         ),
       );
     });
