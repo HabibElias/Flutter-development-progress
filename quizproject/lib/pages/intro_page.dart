@@ -10,13 +10,13 @@ class IntroPage extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xffffe0b2),
-              Color.fromARGB(255, 139, 69, 19),
+              Theme.of(context).colorScheme.primary,
+              Theme.of(context).colorScheme.secondary,
             ],
-            stops: [0.1, 0.75],
+            stops: const [0.1, 0.75],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -29,11 +29,11 @@ class IntroPage extends StatelessWidget {
                 height: 200,
               ),
               // the Logo
-              const Text(
+              Text(
                 'Quiz Time',
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                   fontFamily: 'Lobster',
                 ),
               ),
@@ -41,12 +41,12 @@ class IntroPage extends StatelessWidget {
               const SizedBox(height: 15),
 
               // the message
-              const Text(
+              Text(
                 'Are you ready for a quiz?',
                 style: TextStyle(
                   fontFamily: 'Linden',
                   fontSize: 19.5,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
               ),
 
@@ -67,14 +67,14 @@ class IntroPage extends StatelessWidget {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: const Color(0xffADD8E6),
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Start quiz',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color(0xff1e1e1e),
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontWeight: FontWeight.bold,
                         fontSize: 19.5,
                         fontFamily: 'lily',

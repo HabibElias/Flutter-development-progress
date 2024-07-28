@@ -97,16 +97,16 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffADD8E6),
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color(0x80FFE0B2),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Quiz Time',
           style: TextStyle(
             fontSize: 30,
-            color: Color(0xff1e1e1e),
+            color: Theme.of(context).colorScheme.onSecondary,
             fontFamily: 'Lobster',
           ),
         ),
@@ -122,11 +122,11 @@ class _QuizPageState extends State<QuizPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // the icon
-                  const Icon(
+                  Icon(
                     Icons.alarm_on_sharp,
                     size: 50,
-                    color: Color(0xff1e1e1e),
-                    shadows: [
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    shadows: const [
                       Shadow(
                         color: Color.fromARGB(80, 17, 17, 17),
                         blurRadius: 30,
@@ -138,8 +138,8 @@ class _QuizPageState extends State<QuizPage> {
                   ,
                   Text(
                     timeleft == 0 ? 'Done' : '$timeleft seconds left',
-                    style: const TextStyle(
-                        color: Color(0xff1e1e1e),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontSize: 21,
                         fontFamily: 'Times'),
                   )
@@ -153,13 +153,14 @@ class _QuizPageState extends State<QuizPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
+                  IconButton(
                     onPressed: () => setState(() {
                       carouselController.previousPage(
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.linear);
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.linear,
+                      );
                     }),
-                    child: const Text('angle-left', style: TextStyle(fontFamily: 'MyFlutterApp'),),
+                    icon: const Icon(Icons.arrow_back_ios_new),
                   ),
                   const SizedBox(
                     width: 20,
@@ -167,10 +168,11 @@ class _QuizPageState extends State<QuizPage> {
                   IconButton(
                     onPressed: () => setState(() {
                       carouselController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.linear);
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.linear,
+                      );
                     }),
-                    icon: const Icon(Icons.arrow_forward),
+                    icon: const Icon(Icons.arrow_forward_ios),
                   ),
                 ],
               ),

@@ -7,7 +7,9 @@ ThemeData lightmode = ThemeData(
     onPrimary: Colors.white,
     secondary: Color.fromARGB(255, 139, 69, 19),
     onSecondary: Color(0xff1e1e1e),
+    tertiary: Color(0xffADD8E6),
   ),
+  appBarTheme: const AppBarTheme(backgroundColor: Color(0x80FFE0B2),)
 );
 
 ThemeData darkmode = ThemeData(

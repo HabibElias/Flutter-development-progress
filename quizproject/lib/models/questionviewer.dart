@@ -23,21 +23,24 @@ class QuetionViewer extends StatelessWidget {
           itemCount: question.answers.length,
           itemBuilder: (context, index) {
             String anAnswer = question.answers[index];
-            return ListTile(
-              titleAlignment: ListTileTitleAlignment.center,
-              title: Text(
-                anAnswer,
-                style: const TextStyle(
-                  fontFamily: 'linden',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 19.5,
-                  color: Color(0xff111111),
+            return GestureDetector(
+              onTap: () => onChanged!(anAnswer),
+              child: ListTile(
+                titleAlignment: ListTileTitleAlignment.center,
+                title: Text(
+                  anAnswer,
+                  style: const TextStyle(
+                    fontFamily: 'linden',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 19.5,
+                    color: Color(0xff111111),
+                  ),
                 ),
-              ),
-              leading: Radio<String>(
-                value: anAnswer,
-                groupValue: selectedoption,
-                onChanged: onChanged,
+                leading: Radio<String>(
+                  value: anAnswer,
+                  groupValue: selectedoption,
+                  onChanged: onChanged,
+                ),
               ),
             );
           }),
