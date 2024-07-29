@@ -93,6 +93,10 @@ flutter:
     - family: MyFlutterApp
       fonts:
         - asset: lib/fonts/MyFlutterApp.ttf
+
+    - family: Libre
+      fonts:
+        - asset: lib/fonts/LibreBaskerville-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +7,7 @@ import 'package:quizproject/models/question_model.dart';
 import 'package:quizproject/models/question_view.dart';
 import 'package:quizproject/pages/outro_page.dart';
 import 'package:quizproject/provider/question_provider.dart';
+import 'package:quizproject/provider/theme_provider.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -23,7 +25,6 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     chageTimer();
   }
@@ -36,7 +37,7 @@ class _QuizPageState extends State<QuizPage> {
           timeleft--;
         } else {
           timer.cancel();
-          Timer(const Duration(seconds: 2), () {
+          Timer(const Duration(seconds: 1), () {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -96,6 +97,7 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeofContext = Provider.of<Themeprovider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
@@ -110,6 +112,37 @@ class _QuizPageState extends State<QuizPage> {
             fontFamily: 'Lobster',
           ),
         ),
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: const Icon(Icons.menu_rounded),
+            onPressed: Scaffold.of(context).openDrawer,
+          );
+        }),
+      ),
+      drawer: Drawer(
+        backgroundColor: Theme.of(context).drawerTheme.backgroundColor,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Darkmode',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontSize: 19.5,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Libre',
+                ),
+              ),
+              CupertinoSwitch(
+                value: themeofContext.isDarkmode,
+                onChanged: (value) {
+                  themeofContext.chageThemeData();
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25.0),
@@ -122,11 +155,11 @@ class _QuizPageState extends State<QuizPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // the icon
-                  Icon(
-                    Icons.alarm_on_sharp,
+                  const Icon(
+                    Icons.alarm,
                     size: 50,
-                    color: Theme.of(context).colorScheme.onSecondary,
-                    shadows: const [
+                    color: Color(0xffFFE0B2),
+                    shadows: [
                       Shadow(
                         color: Color.fromARGB(80, 17, 17, 17),
                         blurRadius: 30,
@@ -137,11 +170,12 @@ class _QuizPageState extends State<QuizPage> {
                   // the time display
                   ,
                   Text(
-                    timeleft == 0 ? 'Done' : '$timeleft seconds left',
+                    timeleft == 0 ? 'Done' : '$timeleft Sec',
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSecondary,
-                        fontSize: 21,
-                        fontFamily: 'Times'),
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontSize: 21,
+                      fontFamily: 'Libre',
+                    ),
                   )
                 ],
               ),
@@ -154,24 +188,38 @@ class _QuizPageState extends State<QuizPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
+                    hoverColor: const Color.fromARGB(95, 69, 69, 69),
+                    style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(
+                        Color(0xff757171),
+                      ),
+                    ),
                     onPressed: () => setState(() {
                       carouselController.previousPage(
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.linear,
                       );
                     }),
+                    color: const Color(0xffE1E1E1),
                     icon: const Icon(Icons.arrow_back_ios_new),
                   ),
                   const SizedBox(
                     width: 20,
                   ),
                   IconButton(
+                    hoverColor: const Color.fromARGB(95, 69, 69, 69),
+                    style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(
+                        Color(0xff757171),
+                      ),
+                    ),
                     onPressed: () => setState(() {
                       carouselController.nextPage(
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.linear,
                       );
                     }),
+                    color: const Color(0xffE1E1E1),
                     icon: const Icon(Icons.arrow_forward_ios),
                   ),
                 ],

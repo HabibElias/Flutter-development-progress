@@ -26,17 +26,18 @@ class OutroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeselected = Theme.of(context);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xffffe0b2),
-              Color.fromARGB(255, 139, 69, 19),
+              themeselected.colorScheme.primary,
+              themeselected.colorScheme.secondary,
             ],
-            stops: [0.1, 0.75],
+            stops: const [0.1, 0.75],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -51,30 +52,33 @@ class OutroPage extends StatelessWidget {
                 lineWidth: 25,
                 percent: percentage,
                 circularStrokeCap: CircularStrokeCap.round,
-                backgroundColor: const Color.fromARGB(141, 245, 245, 245),
-                progressColor: const Color(0xffADD8E6),
+                backgroundColor: themeselected.colorScheme.onTertiary,
+                progressColor: themeselected.colorScheme.tertiary,
                 center: Text(
-                  '${percentage * 100}%',
-                  style: const TextStyle(
-                      fontSize: 19.5, fontFamily: 'lily', color: Colors.white),
+                  '${(percentage * 100).toStringAsFixed(1)}%',
+                  style: TextStyle(
+                    fontSize: 19.5,
+                    fontFamily: 'lily',
+                    color: themeselected.colorScheme.onPrimary,
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
               Text(
                 feedBack(percentage),
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: 'lobster',
                   fontSize: 30,
-                  color: Colors.white,
+                  color: themeselected.colorScheme.onPrimary,
                 ),
               ),
               // the message
-              const Text(
+              Text(
                 'Try again if you want',
                 style: TextStyle(
                   fontFamily: 'Linden',
                   fontSize: 19.5,
-                  color: Colors.white,
+                  color: themeselected.colorScheme.onPrimary,
                 ),
               ),
 
@@ -100,14 +104,14 @@ class OutroPage extends StatelessWidget {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: const Color(0xffADD8E6),
+                    color: themeselected.colorScheme.tertiary,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Again?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color(0xff1e1e1e),
+                        color: themeselected.colorScheme.onSecondary,
                         fontWeight: FontWeight.bold,
                         fontSize: 19.5,
                         fontFamily: 'lily',
