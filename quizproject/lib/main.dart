@@ -9,7 +9,7 @@ main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<QuestionProvider>(
-          create: (_) => QuestionProvider(),
+          create: (context) => QuestionProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => Themeprovider(),
