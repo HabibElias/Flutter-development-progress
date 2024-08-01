@@ -17,13 +17,19 @@ ThemeData lightmode = ThemeData(
       fontSize: 19.5,
       fontFamily: 'Bradobrei',
     ),
-   
   ),
-  appBarTheme: const AppBarTheme(titleTextStyle: TextStyle(
+  appBarTheme: const AppBarTheme(
+    titleTextStyle: TextStyle(
       color: Color(0xff141414),
       fontWeight: FontWeight.w600,
       fontSize: 23,
       fontFamily: 'Lexend',
     ),
-  )
+  ),
+  iconButtonTheme: const IconButtonThemeData(
+    style: ButtonStyle(
+        iconColor: WidgetStatePropertyAll(Color(0xffe1e1e1)),
+        backgroundColor:
+            WidgetStatePropertyAll(Color.fromARGB(102, 29, 29, 29))),
+  ),
 );

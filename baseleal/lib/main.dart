@@ -1,5 +1,4 @@
 import 'package:baseleal/pages/first_page.dart';
-import 'package:baseleal/pages/mezmures_page.dart';
 import 'package:baseleal/themes/lightmode.dart';
 import 'package:flutter/material.dart';
 
