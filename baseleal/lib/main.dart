@@ -1,4 +1,4 @@
-import 'package:baseleal/pages/first_page.dart';
+import 'package:baseleal/pages/splash_page.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:baseleal/themes/lightmode.dart';
 import 'package:flutter/material.dart';
