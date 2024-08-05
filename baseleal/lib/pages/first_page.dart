@@ -15,8 +15,12 @@ class _IntroPageState extends State<IntroPage> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MezmuresPage()));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MezmuresPage(),
+        ),
+      );
     });
   }
 

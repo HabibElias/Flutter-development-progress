@@ -1,11 +1,21 @@
 import 'package:baseleal/pages/first_page.dart';
+import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:baseleal/themes/lightmode.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => MezmureProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

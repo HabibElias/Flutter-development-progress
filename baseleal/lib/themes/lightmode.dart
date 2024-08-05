@@ -17,12 +17,35 @@ ThemeData lightmode = ThemeData(
       fontSize: 19.5,
       fontFamily: 'Bradobrei',
     ),
+    labelLarge: TextStyle(
+      color: Color(0xff141414),
+      fontFamily: 'Fantuwua',
+      fontSize: 23,
+    ),
+    labelMedium: TextStyle(
+      color: Color(0xff141414),
+      fontFamily: 'Fantuwua',
+      fontSize: 17,
+    ),
+    labelSmall: TextStyle(
+      color: Color.fromARGB(128, 20, 20, 20),
+      fontFamily: 'Lexend',
+      fontSize: 15,
+      fontWeight: FontWeight.w300,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: 'Sadiss',
+      color: Color(0xff141414),
+      fontSize: 23,
+      height: 1.25,
+      letterSpacing: 1.25,
+    ),
   ),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       color: Color(0xff141414),
       fontWeight: FontWeight.w600,
-      fontSize: 23,
+      fontSize: 21,
       fontFamily: 'Lexend',
     ),
   ),

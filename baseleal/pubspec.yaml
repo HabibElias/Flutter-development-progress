@@ -83,6 +83,12 @@ flutter:
     - family: Lexend
       fonts:
         - asset: lib/fonts/Lexend-VariableFont_wght.ttf
+    - family: Fantuwua
+      fonts:
+        - asset: lib/fonts/fantuwua.ttf
+    - family: Sadiss
+      fonts:
+        - asset: lib/fonts/EthiopicSadiss-Regular(ኢትዮጲክ).ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

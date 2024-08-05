@@ -1,5 +1,8 @@
-import 'package:baseleal/models/mezmures/%E1%88%85%E1%8B%AB%E1%8B%8D%20%E1%88%98%E1%88%B5%E1%8B%8B%E1%8B%95%E1%89%B5.dart';
+import 'package:baseleal/models/mezmure.dart';
+import 'package:baseleal/pages/mezmure_page.dart';
+import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MezmuresPage extends StatefulWidget {
   const MezmuresPage({super.key});
@@ -11,6 +14,9 @@ class MezmuresPage extends StatefulWidget {
 class _MezmuresPageState extends State<MezmuresPage> {
   @override
   Widget build(BuildContext context) {
+    final List<Mezmure> mezmures =
+        Provider.of<MezmureProvider>(context).getMezmures;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -18,7 +24,9 @@ class _MezmuresPageState extends State<MezmuresPage> {
             Icons.arrow_back_ios_rounded,
           ),
           style: Theme.of(context).iconButtonTheme.style,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         elevation: 0,
         centerTitle: true,
@@ -41,30 +49,58 @@ class _MezmuresPageState extends State<MezmuresPage> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Divider(
               thickness: 2,
               color: Color(0xff82837c),
             ),
             Expanded(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: SingleChildScrollView(
-                    child: Text(
-                      mezmure,
-                      style: const TextStyle(
-                        fontFamily: 'Ethiopic Sadiss',
-                        color: Color(0xff141414),
-                        fontSize: 18.75,
-                        height: 1.5,
+              child: ListView.builder(
+                  itemCount: mezmures.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              MezmurePage(mezmure: mezmures[index]),
+                        ),
                       ),
-                      // textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ),
+                      child: Padding(
+                        padding: index == 0
+                            ? const EdgeInsets.only(
+                                top: 15,
+                                left: 22,
+                                right: 22,
+                              )
+                            : const EdgeInsets.only(
+                                top: 22,
+                                left: 22,
+                                right: 22,
+                              ),
+                        child: Container(
+                          padding: const EdgeInsets.all(15.0),
+                          decoration: BoxDecoration(
+                            color: const Color.fromRGBO(20, 20, 20, 0.2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                mezmures[index].name,
+                                style: Theme.of(context).textTheme.labelMedium,
+                              ),
+                              Text(
+                                mezmures[index].mezmureType,
+                                style: Theme.of(context).textTheme.labelSmall,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
             ),
           ],
         ),
