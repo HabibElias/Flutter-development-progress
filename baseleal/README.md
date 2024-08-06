@@ -1,6 +1,7 @@
 # baseleal
 
-A new Flutter project.
+A Mobile application for my church choir called baseleal.
+It has the teams mezmure (Gospel song) lyrics, and our memories in a gallery form.
 
 ## Getting Started
 
