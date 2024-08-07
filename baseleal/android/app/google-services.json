@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "278126871771",
+    "project_id": "baseleal-9fb49",
+    "storage_bucket": "baseleal-9fb49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278126871771:android:bddbe2642b93ae2d6678fe",
+        "android_client_info": {
+          "package_name": "com.example.baseleal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKZsTKvcUw4ctcIkR0rAH7pwgu87it1dw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
