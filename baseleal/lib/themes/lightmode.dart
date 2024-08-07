@@ -16,6 +16,7 @@ ThemeData lightmode = ThemeData(
       color: Color(0xff141414),
       fontSize: 19.5,
       fontFamily: 'Bradobrei',
+      height: 0.85,
     ),
     labelLarge: TextStyle(
       color: Color(0xff141414),
@@ -39,6 +40,17 @@ ThemeData lightmode = ThemeData(
       fontSize: 23,
       height: 1.25,
       letterSpacing: 1.25,
+    ),
+    displayLarge: TextStyle(
+      color: Color(0xff141414),
+      fontSize: 23,
+      fontFamily: 'Baris',
+    ),
+    displayMedium: TextStyle(
+      color: Color(0xff141414),
+      fontSize: 18.5,
+      fontFamily: 'Bradobrei',
+      height: 0.85,
     ),
   ),
   appBarTheme: const AppBarTheme(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:baseleal/pages/mezmures_page.dart';
+import 'package:baseleal/pages/front_page.dart';
+// import 'package:baseleal/pages/mezmures_page.dart';
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _IntroPageState extends State<IntroPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const MezmuresPage(),
+          builder: (context) => const FrontPage(),
         ),
       );
     });
