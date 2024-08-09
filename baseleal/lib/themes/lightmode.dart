@@ -52,6 +52,12 @@ ThemeData lightmode = ThemeData(
       fontFamily: 'Bradobrei',
       height: 0.85,
     ),
+    displaySmall: TextStyle(
+      color: Color.fromARGB(128, 0, 115, 255),
+      fontFamily: 'Lexend',
+      fontSize: 12,
+      fontWeight: FontWeight.w300,
+    ),
   ),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
@@ -60,6 +66,7 @@ ThemeData lightmode = ThemeData(
       fontSize: 21,
       fontFamily: 'Lexend',
     ),
+  
   ),
   iconButtonTheme: const IconButtonThemeData(
     style: ButtonStyle(
