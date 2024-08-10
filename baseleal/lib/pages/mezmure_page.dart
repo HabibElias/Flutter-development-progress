@@ -55,7 +55,7 @@ class _MezmurePageState extends State<MezmurePage> {
                     width: 320,
                     child: SingleChildScrollView(
                       child: Text(
-                        widget.mezmure.mezmure,
+                        widget.mezmure.mezmure.replaceAll('\\n', '\n'),
                         style: Theme.of(context).textTheme.bodySmall,
                         // textAlign: TextAlign.center,
                       ),

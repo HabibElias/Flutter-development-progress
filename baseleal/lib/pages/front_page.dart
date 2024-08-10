@@ -1,3 +1,6 @@
+import 'package:baseleal/pages/mezmure_tile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -13,7 +16,8 @@ class _FrontPageState extends State<FrontPage> {
   List<String> imageURL = [];
 
   bool isLoading = false;
-  fetch() async {
+
+  fetchPhotos() async {
     setState(() {
       isLoading = true;
     });
@@ -30,9 +34,8 @@ class _FrontPageState extends State<FrontPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    fetch();
+    fetchPhotos();
   }
 
   @override
@@ -164,7 +167,9 @@ class _FrontPageState extends State<FrontPage> {
                                     (url) => Container(
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
-                                          image: NetworkImage(url),
+                                          image: CachedNetworkImageProvider(
+                                            url,
+                                          ),
                                           fit: BoxFit.cover,
                                         ),
                                         borderRadius:
@@ -196,6 +201,44 @@ class _FrontPageState extends State<FrontPage> {
                           ),
                         ),
                       ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Our Mezmures',
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    'View all',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            StreamBuilder(
+              stream:
+                  FirebaseFirestore.instance.collection('mezmures').snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (context, index) => MezmureTile(
+                      mezmure: snapshot.data!.docs[index],
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
