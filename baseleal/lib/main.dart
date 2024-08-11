@@ -1,10 +1,13 @@
 import 'package:baseleal/pages/splash_page.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
+// import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:baseleal/themes/lightmode.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,10 +25,16 @@ void main() async {
   } else {
     await Firebase.initializeApp();
   }
+  //init the hive
+  await Hive.initFlutter();
+
+  // ignore: no_leading_underscores_for_local_identifiers, unused_local_variable
+  var box = await Hive.openBox('myBox');
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
+        ChangeNotifierProvider<MezmureProvider>(
           create: (context) => MezmureProvider(),
         ),
       ],

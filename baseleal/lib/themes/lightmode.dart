@@ -29,10 +29,10 @@ ThemeData lightmode = ThemeData(
       fontSize: 17,
     ),
     labelSmall: TextStyle(
-      color: Color.fromARGB(128, 20, 20, 20),
+      color: Color.fromARGB(163, 20, 20, 20),
       fontFamily: 'Lexend',
-      fontSize: 15,
-      fontWeight: FontWeight.w300,
+      fontSize: 16,
+      fontWeight: FontWeight.normal,
     ),
     bodySmall: TextStyle(
       fontFamily: 'Sadiss',
@@ -53,10 +53,10 @@ ThemeData lightmode = ThemeData(
       height: 0.85,
     ),
     displaySmall: TextStyle(
-      color: Color.fromARGB(128, 0, 115, 255),
+      color: Color.fromARGB(255, 15, 81, 162),
       fontFamily: 'Lexend',
-      fontSize: 12,
-      fontWeight: FontWeight.w300,
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
     ),
   ),
   appBarTheme: const AppBarTheme(
@@ -66,7 +66,6 @@ ThemeData lightmode = ThemeData(
       fontSize: 21,
       fontFamily: 'Lexend',
     ),
-  
   ),
   iconButtonTheme: const IconButtonThemeData(
     style: ButtonStyle(

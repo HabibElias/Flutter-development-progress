@@ -1,5 +1,5 @@
 import 'package:baseleal/models/mezmure.dart';
-import 'package:baseleal/pages/mezmure_page.dart';
+import 'package:baseleal/models/mezmure_tile.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,53 +55,31 @@ class _MezmuresPageState extends State<MezmuresPage> {
               color: Color(0xff82837c),
             ),
             Expanded(
-              child: ListView.builder(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 22.0),
+                child: ListView.builder(
                   itemCount: mezmures.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              MezmurePage(mezmure: mezmures[index]),
+                  itemBuilder: (context, index) => mezmures.isNotEmpty
+                      ? Padding(
+                          padding: index != 0
+                              ? const EdgeInsets.only(
+                                  top: 22.0,
+                                  left: 22.0,
+                                  right: 22.0,
+                                )
+                              : const EdgeInsets.only(
+                                  left: 22.0,
+                                  right: 22.0,
+                                ),
+                          child: MezmureTile(
+                            mezmure: mezmures[index],
+                          ))
+                      : const Center(
+                          child: CircularProgressIndicator(),
                         ),
-                      ),
-                      child: Padding(
-                        padding: index == 0
-                            ? const EdgeInsets.only(
-                                top: 15,
-                                left: 22,
-                                right: 22,
-                              )
-                            : const EdgeInsets.only(
-                                top: 22,
-                                left: 22,
-                                right: 22,
-                              ),
-                        child: Container(
-                          padding: const EdgeInsets.all(15.0),
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(20, 20, 20, 0.2),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                mezmures[index].name,
-                                style: Theme.of(context).textTheme.labelMedium,
-                              ),
-                              Text(
-                                mezmures[index].mezmureType,
-                                style: Theme.of(context).textTheme.labelSmall,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ),
+                ),
+              ),
+            )
           ],
         ),
       ),
