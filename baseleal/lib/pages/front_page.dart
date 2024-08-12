@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:baseleal/models/mezmure.dart';
 import 'package:baseleal/models/mezmure_tile.dart';
+import 'package:baseleal/pages/gallery_page.dart';
 import 'package:baseleal/pages/mezmures_page.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -216,7 +217,15 @@ class _FrontPageState extends State<FrontPage> {
                                         Theme.of(context).textTheme.labelSmall,
                                   ),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const GalleryPage(),
+                                        ),
+                                      );
+                                    },
                                     child: Text(
                                       'View all',
                                       style: Theme.of(context)
@@ -314,11 +323,11 @@ class _FrontPageState extends State<FrontPage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MezmuresPage(),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const MezmuresPage(),
+                                  ),
+                                );
                               },
                               child: Text(
                                 'View all',

@@ -58,6 +58,23 @@ ThemeData lightmode = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.normal,
     ),
+    headlineMedium: TextStyle(
+      color: Color.fromARGB(255, 59, 59, 59),
+      fontSize: 23,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Bradobrei',
+    ),bodyLarge: TextStyle(
+      color: Colors.black,
+      fontFamily: 'Lexend',
+      fontSize: 30,
+      fontWeight: FontWeight.normal,
+    ),
+    bodyMedium: TextStyle(
+      color: Color.fromARGB(140, 0, 0, 0),
+      fontFamily: 'Lexend',
+      fontSize: 20,
+      fontWeight: FontWeight.normal,
+    ),
   ),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
