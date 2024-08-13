@@ -5,9 +5,9 @@ import 'package:baseleal/models/mezmure_tile.dart';
 import 'package:baseleal/pages/gallery_page.dart';
 import 'package:baseleal/pages/mezmures_page.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
+import 'package:baseleal/providers/theme_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -153,14 +153,25 @@ class _FrontPageState extends State<FrontPage> {
                         Text(
                           'Welcome!',
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.inversePrimary,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondary
+                                .withAlpha(153),
                             fontFamily: 'Rosarivo',
                             fontSize: 15,
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
-                          icon: 1 == 2
+                          onPressed: () {
+                            Provider.of<ThemeProvider>(
+                              context,
+                              listen: false,
+                            ).toggleTheme();
+                          },
+                          icon: Provider.of<ThemeProvider>(
+                            context,
+                            listen: false,
+                          ).isLightmode
                               ? const Icon(Icons.dark_mode)
                               : const Icon(Icons.light_mode),
                         )
@@ -213,8 +224,14 @@ class _FrontPageState extends State<FrontPage> {
                                 children: [
                                   Text(
                                     'Our last Collections',
-                                    style:
-                                        Theme.of(context).textTheme.labelSmall,
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary
+                                          .withAlpha(153),
+                                      fontFamily: 'Lexend',
+                                      fontSize: 16,
+                                    ),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -240,11 +257,13 @@ class _FrontPageState extends State<FrontPage> {
                               height: 18,
                             ),
                             Container(
-                              decoration: const BoxDecoration(boxShadow: [
+                              decoration: BoxDecoration(boxShadow: [
                                 BoxShadow(
-                                  blurRadius: 10,
-                                  color: Color.fromARGB(40, 17, 17, 17),
-                                  offset: Offset(0, 10),
+                                  blurRadius: 20,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondaryFixedDim,
+                                  offset: const Offset(0, 10),
                                 ),
                               ]),
                               child: CarouselSlider(
@@ -282,9 +301,8 @@ class _FrontPageState extends State<FrontPage> {
                               child: Text(
                                 'No Internet Connection !!!',
                                 style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                   fontFamily: 'Rosarivo',
                                   fontSize: 15,
                                 ),
@@ -294,9 +312,8 @@ class _FrontPageState extends State<FrontPage> {
                               child: Text(
                                 'Loading ...',
                                 style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                   fontFamily: 'Rosarivo',
                                   fontSize: 15,
                                 ),
@@ -318,7 +335,14 @@ class _FrontPageState extends State<FrontPage> {
                           children: [
                             Text(
                               'Our Mezmures',
-                              style: Theme.of(context).textTheme.labelSmall,
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondary
+                                    .withAlpha(153),
+                                fontFamily: 'Lexend',
+                                fontSize: 16,
+                              ),
                             ),
                             GestureDetector(
                               onTap: () {
@@ -360,8 +384,12 @@ class _FrontPageState extends State<FrontPage> {
                                       mezmure: mezmures[index],
                                     ),
                                   )
-                                : const Center(
-                                    child: CircularProgressIndicator(),
+                                : Center(
+                                    child: CircularProgressIndicator(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                    ),
                                   ),
                           ),
                         ),

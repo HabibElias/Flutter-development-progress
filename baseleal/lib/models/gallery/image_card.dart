@@ -22,11 +22,11 @@ class ImageCard extends StatelessWidget {
       width: 150,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary.withAlpha(215),
-        boxShadow: const [
+        boxShadow:  [
           BoxShadow(
-            color: Color.fromARGB(57, 0, 0, 0),
-            blurRadius: 14,
-            offset: Offset(0, 16),
+            color: Theme.of(context).colorScheme.secondaryFixedDim,
+            blurRadius: 15,
+            offset: const Offset(0, 16),
           ),
         ],
         borderRadius: BorderRadius.circular(15),

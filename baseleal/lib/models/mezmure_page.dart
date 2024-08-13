@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:baseleal/models/mezmure.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,17 @@ class MezmurePage extends StatefulWidget {
 }
 
 class _MezmurePageState extends State<MezmurePage> {
+  // estimating the number of lines in a string
+  int estimateLineCount(String text) {
+    return text.split('\\n').length;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
+          
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
           ),
@@ -52,11 +59,15 @@ class _MezmurePageState extends State<MezmurePage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: SizedBox(
-                    width: 320,
+                    width: 340,
                     child: SingleChildScrollView(
-                      child: Text(
+                      child: AutoSizeText(
                         widget.mezmure.mezmure.replaceAll('\\n', '\n'),
                         style: Theme.of(context).textTheme.bodySmall,
+                        maxLines: estimateLineCount(
+                          widget.mezmure.mezmure,
+                        ),
+                        maxFontSize: 27,
                         // textAlign: TextAlign.center,
                       ),
                     ),

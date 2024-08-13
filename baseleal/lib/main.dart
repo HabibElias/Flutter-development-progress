@@ -1,5 +1,7 @@
 import 'package:baseleal/pages/splash_page.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
+import 'package:baseleal/providers/theme_provider.dart';
+import 'package:baseleal/themes/darkmode.dart';
 // import 'package:baseleal/providers/mezmure_provider.dart';
 import 'package:baseleal/themes/lightmode.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,6 +39,9 @@ void main() async {
         ChangeNotifierProvider<MezmureProvider>(
           create: (context) => MezmureProvider(),
         ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (context) => ThemeProvider(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -51,7 +56,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const IntroPage(),
-      theme: lightmode,
+      theme: Provider.of<ThemeProvider>(context).getThemeData,
     );
   }
 }

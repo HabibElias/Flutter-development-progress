@@ -41,8 +41,10 @@ class _GalleryPageState extends State<GalleryPage> {
                 height: 20,
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 18, vertical: 13),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 13,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

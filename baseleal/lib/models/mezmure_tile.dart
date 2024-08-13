@@ -24,7 +24,7 @@ class MezmureTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: const Color.fromRGBO(20, 20, 20, 0.2),
+          color: Theme.of(context).colorScheme.onSecondary,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
