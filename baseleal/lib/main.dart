@@ -1,4 +1,3 @@
-import 'package:baseleal/pages/gallery_page.dart';
 import 'package:baseleal/pages/splash_page.dart';
 import 'package:baseleal/providers/mezmure_provider.dart';
 // import 'package:baseleal/providers/mezmure_provider.dart';

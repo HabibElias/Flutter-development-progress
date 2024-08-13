@@ -1,6 +1,7 @@
 import 'package:baseleal/models/gallery/fetching_galler.dart';
 import 'package:baseleal/models/gallery/galler_folder_model.dart';
 import 'package:baseleal/models/gallery/image_card.dart';
+import 'package:baseleal/models/gallery/image_grid.dart';
 import 'package:flutter/material.dart';
 
 class GalleryPage extends StatefulWidget {
@@ -36,7 +37,9 @@ class _GalleryPageState extends State<GalleryPage> {
 
           Column(
             children: [
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 18, vertical: 13),
@@ -93,10 +96,22 @@ class _GalleryPageState extends State<GalleryPage> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.all(30.0),
-                        child: ImageCard(
-                          imageurl: snapshot.data![index].folderImageurl,
-                          cardName: snapshot.data![index].folderName,
-                          inCardNumber: snapshot.data![index].imagesInFolder,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ImageGrid(
+                                    foldersName:
+                                        snapshot.data![index].folderName),
+                              ),
+                            );
+                          },
+                          child: ImageCard(
+                            imageurl: snapshot.data![index].folderImageurl,
+                            cardName: snapshot.data![index].folderName,
+                            inCardNumber: snapshot.data![index].imagesInFolder,
+                          ),
                         ),
                       ),
                     ),
