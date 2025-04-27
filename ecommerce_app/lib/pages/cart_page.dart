@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/model/cart.dart';
 import 'package:ecommerce_app/model/cart_items.dart';
 import '../model/shoe.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // Ensure this import is present and not shadowed
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
